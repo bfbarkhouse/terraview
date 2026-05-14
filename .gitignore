@@ -1,0 +1,5 @@
+.superpowers/
+terraview
+*.test
+*.out
+docs/
