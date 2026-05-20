@@ -50,3 +50,14 @@ func TestResolvePath_Absolute(t *testing.T) {
 		t.Fatalf("expected /tmp/foo, got %s", got)
 	}
 }
+
+func TestResolvePath_BareTilde(t *testing.T) {
+	home, _ := os.UserHomeDir()
+	got, err := cmd.ResolvePath("~")
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if got != home {
+		t.Fatalf("expected %s, got %s", home, got)
+	}
+}
