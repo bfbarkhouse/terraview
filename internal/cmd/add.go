@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"errors"
 	"flag"
 	"fmt"
 	"os"
@@ -30,6 +31,9 @@ func RunAdd(args []string) error {
 	fs := flag.NewFlagSet("add", flag.ContinueOnError)
 	tagsFlag := fs.String("tags", "", "comma-separated tags to assign to the workspace")
 	if err := fs.Parse(args); err != nil {
+		if errors.Is(err, flag.ErrHelp) {
+			return nil
+		}
 		return err
 	}
 	if fs.NArg() != 1 {
@@ -77,7 +81,7 @@ func RunAdd(args []string) error {
 
 	home, _ := os.UserHomeDir()
 	display := resolved
-	if home != "" && strings.HasPrefix(resolved, home) {
+	if home != "" && (resolved == home || strings.HasPrefix(resolved, home+string(os.PathSeparator))) {
 		display = "~" + resolved[len(home):]
 	}
 	fmt.Printf("Added workspace: %s\n", display)
