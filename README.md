@@ -4,7 +4,7 @@ Have you ever forgot about cloud resources you deployed and left running until t
 
 ## Demo
 
-![terraview demo](demo.gif)
+![terraview demo](demo-v2.gif)
 
 ## Installation
 
