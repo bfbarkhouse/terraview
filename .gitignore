@@ -3,3 +3,6 @@ terraview
 *.test
 *.out
 docs/
+demo-config.json
+demo-run.sh
+demo.tape
