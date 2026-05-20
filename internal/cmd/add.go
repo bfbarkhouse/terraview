@@ -41,8 +41,12 @@ func RunAdd(args []string) error {
 		return fmt.Errorf("resolving path: %w", err)
 	}
 
-	if _, err := os.Stat(resolved); err != nil {
+	info, err := os.Stat(resolved)
+	if err != nil {
 		return fmt.Errorf("directory does not exist: %s", resolved)
+	}
+	if !info.IsDir() {
+		return fmt.Errorf("not a directory: %s", resolved)
 	}
 
 	cfg, err := config.Load()

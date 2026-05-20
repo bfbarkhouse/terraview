@@ -140,3 +140,20 @@ func TestRunAdd_NoArgs(t *testing.T) {
 		t.Fatal("expected error for missing argument, got nil")
 	}
 }
+
+func TestRunAdd_NotADirectory(t *testing.T) {
+	f, err := os.CreateTemp("", "terraview-test-*")
+	if err != nil {
+		t.Fatal(err)
+	}
+	f.Close()
+	t.Cleanup(func() { os.Remove(f.Name()) })
+
+	config.SetConfigDir(t.TempDir())
+	t.Cleanup(func() { config.SetConfigDir("") })
+
+	err = cmd.RunAdd([]string{f.Name()})
+	if err == nil {
+		t.Fatal("expected error for non-directory path, got nil")
+	}
+}
