@@ -2,14 +2,14 @@
 
 A terminal UI for monitoring Terraform workspaces. Browse deployed resources across multiple state files, tag and filter workspaces, and drop into a shell in any directory — all without leaving your terminal.
 
-## Screenshot
+## Demo
 
 ![terraview demo](demo.gif)
 
 ## Installation
 
 ```bash
-git clone https://github.com/bfbarkhouse-redpanda/terraview
+git clone https://github.com/bfbarkhouse/terraview
 cd terraview
 go install .
 ```
