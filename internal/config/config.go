@@ -8,6 +8,11 @@ import (
 
 var configDirOverride string
 
+// SetConfigDir overrides the config directory. Call with "" to reset. For testing only.
+func SetConfigDir(dir string) {
+	configDirOverride = dir
+}
+
 // WorkspaceEntry holds a directory path and its associated tags.
 type WorkspaceEntry struct {
 	Dir  string   `json:"dir"`
