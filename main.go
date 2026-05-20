@@ -10,7 +10,31 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 )
 
+const usage = `terraview — terminal UI for monitoring Terraform workspaces
+
+Usage:
+  terraview                         launch the TUI
+  terraview add <dir> [--tags ...]  add a workspace to the config
+
+Flags:
+  -h, --help  show this help
+
+TUI keys:
+  e        open workspace editor
+  t        edit tags for selected workspace
+  f        filter by tag
+  s        toggle summary view
+  r        refresh selected workspace
+  o        open shell in workspace directory
+  q        quit
+`
+
 func main() {
+	if len(os.Args) > 1 && (os.Args[1] == "--help" || os.Args[1] == "-h" || os.Args[1] == "help") {
+		fmt.Print(usage)
+		return
+	}
+
 	if len(os.Args) > 1 && os.Args[1] == "add" {
 		if err := cmd.RunAdd(os.Args[2:]); err != nil {
 			fmt.Fprintln(os.Stderr, "error:", err)
