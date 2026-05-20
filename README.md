@@ -1,6 +1,6 @@
 # terraview
 
-Have you ever forgot about cloud resources you deployed and left running until the bill comes due and you panic run `terraform destroy`? Panic no more, because Terraview, a terminal, shows you all Terraform state files at a glance, indicating which are tracking resources and which are empty. Easily add new state files as you go with `terraview add .` or bulk load from existing projects. Browse deployed resources across multiple state files, tag and filter them, and drop into a shell in any directory all without leaving terraview.
+Have you ever forgot about cloud resources you deployed and left running until the bill comes due and you panic run `terraform destroy`? Panic no more, because Terraview, a terminal UI, shows you all Terraform state files at a glance, indicating which are tracking resources and which are empty. Easily add new state files as you go with `terraview add .` or bulk load from existing projects. Browse deployed resources across multiple state files, tag and filter them, and drop into a shell in any directory all without leaving terraview.
 
 ## Demo
 
@@ -23,46 +23,46 @@ terraview          # launch the TUI
 terraview --help   # show help
 ```
 
-On first launch the projects list is empty. Press `e` to add your Terraform folders, or use `terraview add` from the command line:
+On first launch the state file list is empty. Press `e` to add your Terraform directories, or use `terraview add` from the command line:
 
 ```bash
-terraview add .                              # add the current folder
-terraview add ~/infra/prod                   # add a specific folder
+terraview add .                              # add the current directory
+terraview add ~/infra/prod                   # add a specific directory
 terraview add ~/infra/prod --tags prod,aws   # add with tags
 ```
 
-If the folder is already in the config, terraview prints a warning and exits cleanly.
+If the directory is already in the config, terraview prints a warning and exits cleanly.
 
 ## Features
 
-### Project list + resource browser
+### State file list + resource browser
 
-The default view splits the screen: projects on the left, resources for the selected folder on the right. Use `tab` to move focus between the two panels, and arrow keys (or `j`/`k`) to navigate within each.
+The default view splits the screen: state files on the left, resources for the selected state file on the right. Use `tab` to move focus between the two panels, and arrow keys (or `j`/`k`) to navigate within each.
 
 A green dot next to a state file means a `terraform.tfstate` file was found with at least one resource. A red dot means no state file or no resources.
 
 ### Summary view
 
-Press `s` to switch to a card grid showing all projects at a glance. Cards wrap to fill the window width. Use arrow keys to navigate, `enter` to jump to a folder in split view, and `s` again to go back.
+Press `s` to switch to a card grid showing all state files at a glance. Cards wrap to fill the window width. Use arrow keys to navigate, `enter` to jump to a state file in split view, and `s` again to go back.
 
 ### Adding and editing state files
 
 Press `e` to open the state file editor. From there:
 
-- **Add a single folder** — press `enter`, type a path (tab-expands `~`), confirm with `enter`.
-- **Recursive scan** — press `enter`, type a root path, then press `tab` to toggle to recursive mode. terraview walks the directory tree and adds every folder containing a `terraform.tfstate` file as a separate state.
-- **Delete a folder** — navigate to it and press `d`.
+- **Add a single directory** — press `enter`, type a path (tab-expands `~`), confirm with `enter`.
+- **Recursive scan** — press `enter`, type a root path, then press `tab` to toggle to recursive mode. terraview walks the directory tree and adds every directory containing a `terraform.tfstate` file as a separate state file.
+- **Delete a state file** — navigate to it and press `d`.
 - **Save** — `ctrl+s`. Changes are written to `~/.config/terraview/config.json`.
 
 ### Tags
 
-Tags let you group and filter states. Press `t` on any selected folder to open the tag editor:
+Tags let you group and filter state files. Press `t` on any selected state file to open the tag editor:
 
 - `enter` or `tab` — add a new tag (comma-separated for multiple)
 - `d` — remove the highlighted tag
 - `ctrl+s` — save
 
-The tag input offers prefix-match autocomplete from all tags currently in use across your states. Press `tab` to accept a suggestion.
+The tag input offers prefix-match autocomplete from all tags currently in use across your state files. Press `tab` to accept a suggestion.
 
 ### Filtering
 
@@ -70,11 +70,11 @@ Press `f` to open the filter bar. Type a tag and press `enter` to add it as an a
 
 ### Open a shell
 
-Press `o` to suspend terraview and open `$SHELL` with its working directory set to the selected folder. When you `exit` the shell, terraview resumes exactly where you left off.
+Press `o` to suspend terraview and open `$SHELL` with its working directory set to the selected state file's directory. When you `exit` the shell, terraview resumes exactly where you left off.
 
 ### Refresh
 
-Press `r` to re-read the `terraform.tfstate` file for the currently selected state and update the resource list.
+Press `r` to re-read the `terraform.tfstate` file for the currently selected state file and update the resource list.
 
 ## Key reference
 
@@ -82,12 +82,12 @@ Press `r` to re-read the `terraform.tfstate` file for the currently selected sta
 |-----|--------|
 | `↑` / `k`, `↓` / `j` | Navigate up/down |
 | `←` / `h`, `→` / `l` | Navigate left/right (summary view) |
-| `tab` | Switch focus between state and resource panels |
+| `tab` | Switch focus between state file and resource panels |
 | `s` | Toggle summary view |
 | `e` | Open state file editor |
-| `t` | Edit tags for selected state |
+| `t` | Edit tags for selected state file |
 | `f` | Open filter bar |
-| `r` | Refresh selected state |
+| `r` | Refresh selected state file |
 | `o` | Open shell in selected directory |
 | `enter` | Select / confirm |
 | `esc` | Cancel / close modal |
