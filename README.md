@@ -34,10 +34,19 @@ Requires Go 1.24+.
 ## Usage
 
 ```bash
-terraview
+terraview          # launch the TUI
+terraview --help   # show help
 ```
 
-On first launch the workspace list is empty. Press `e` to add your Terraform directories.
+On first launch the workspace list is empty. Press `e` to add your Terraform directories, or use `terraview add` from the command line:
+
+```bash
+terraview add .                              # add the current directory
+terraview add ~/infra/prod                   # add a specific directory
+terraview add ~/infra/prod --tags prod,aws   # add with tags
+```
+
+If the directory is already in the config, terraview prints a warning and exits cleanly.
 
 ## Features
 
