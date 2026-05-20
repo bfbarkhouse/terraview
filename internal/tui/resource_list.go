@@ -58,7 +58,7 @@ func (m ResourceList) View() string {
 
 	if m.workspace == nil {
 		body := styleHeader.Render("RESOURCES") + "\n\n" +
-			styleMuted.Render("select a workspace")
+			styleMuted.Render("select a state file")
 		return border.Width(m.width).Height(m.height).Render(body)
 	}
 

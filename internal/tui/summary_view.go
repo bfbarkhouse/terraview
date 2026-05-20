@@ -117,7 +117,7 @@ func (m SummaryView) View() string {
 		}
 		sb.WriteString(lipgloss.JoinVertical(lipgloss.Left, rows...))
 	} else {
-		sb.WriteString(styleMuted.Render("no workspaces — press e to add"))
+		sb.WriteString(styleMuted.Render("no state files — press e to add"))
 	}
 
 	sb.WriteString("\n\n" + styleMuted.Render("←/→ navigate  enter=open  s=back"))

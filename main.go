@@ -20,7 +20,7 @@ Flags:
   -h, --help  show this help
 
 TUI keys:
-  e        open workspace editor
+  e        open state file editor
   t        edit tags for selected workspace
   f        filter by tag
   s        toggle summary view

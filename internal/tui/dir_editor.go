@@ -173,7 +173,7 @@ func (m DirEditor) Update(msg tea.Msg) (DirEditor, tea.Cmd) {
 // View renders the dir editor as a centered modal.
 func (m DirEditor) View() string {
 	var sb strings.Builder
-	sb.WriteString(styleTitle.Render("Edit Workspaces") + "\n\n")
+	sb.WriteString(styleTitle.Render("Edit State Files") + "\n\n")
 
 	for i, e := range m.entries {
 		line := shortenPath(e.Dir)
@@ -199,7 +199,7 @@ func (m DirEditor) View() string {
 		}
 		sb.WriteString(styleMuted.Render(fmt.Sprintf("enter=confirm  tab=mode:%s  esc=cancel", mode)))
 	case phaseScanConfirm:
-		sb.WriteString(styleMuted.Render(fmt.Sprintf("Found %d workspace(s):", len(m.scannedDirs))) + "\n")
+		sb.WriteString(styleMuted.Render(fmt.Sprintf("Found %d state file(s):", len(m.scannedDirs))) + "\n")
 		for _, d := range m.scannedDirs {
 			sb.WriteString("  " + shortenPath(d) + "\n")
 		}

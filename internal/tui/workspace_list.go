@@ -68,7 +68,7 @@ func (m WorkspaceList) Update(msg tea.Msg) (WorkspaceList, tea.Cmd) {
 // View renders the workspace list panel.
 func (m WorkspaceList) View() string {
 	var sb strings.Builder
-	sb.WriteString(styleHeader.Render("WORKSPACES") + "\n\n")
+	sb.WriteString(styleHeader.Render("STATE FILES") + "\n\n")
 
 	for i, ws := range m.workspaces {
 		selected := i == m.cursor && m.focused
@@ -111,7 +111,7 @@ func (m WorkspaceList) View() string {
 	}
 
 	if len(m.workspaces) == 0 {
-		sb.WriteString(styleMuted.Render("  no workspaces") + "\n")
+		sb.WriteString(styleMuted.Render("  no state files") + "\n")
 	}
 
 	sb.WriteString("\n" + styleMuted.Render("e = add/edit"))
