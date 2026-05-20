@@ -1,6 +1,7 @@
 # terraview
+### A terminal UI for your Terraform state files
 
-Have you ever forgot about cloud resources you deployed and left running until the bill comes due and you panic run `terraform destroy`? Panic no more, because Terraview, a terminal UI, shows you all Terraform state files at a glance, indicating which are tracking resources and which are empty. Easily add new state files as you go with `terraview add .` or bulk load from existing projects. Browse deployed resources across multiple state files, tag and filter them, and drop into a shell in any directory all without leaving terraview.
+Never forget a deployed resource again. terraview shows all your Terraform state files at a glance — green means resources are tracked, red means empty. Add state files with `terraview add .`, bulk-scan existing projects, browse resources, tag and filter, and drop into a shell in any directory, all without leaving your terminal.
 
 ## Demo
 
