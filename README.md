@@ -4,22 +4,7 @@ A terminal UI for monitoring Terraform workspaces. Browse deployed resources acr
 
 ## Screenshot
 
-```
-terraview  tab=focus  s=summary  e=edit  t=tags  f=filter  r=refresh  o=shell  q=quit
-
-╭─────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-│ WORKSPACES              │ │ ~/infra/prod — 12 resources                          │
-│                         │ │                                                      │
-│ ▶ ● ~/infra/prod        │ │ ● aws_instance.web                                   │
-│   prod aws              │ │ ● aws_instance.worker                                │
-│   ● ~/infra/staging     │ │ ● aws_s3_bucket.assets                               │
-│   staging aws           │ │ ● aws_rds_instance.main                              │
-│   ● ~/infra/dev         │ │ ● aws_security_group.web                             │
-│   dev                   │ │ ● aws_vpc.main                                       │
-│                         │ │                                                      │
-│ e = add/edit            │ │                                                      │
-╰─────────────────────────╯ ╰──────────────────────────────────────────────────────╯
-```
+![terraview demo](demo.gif)
 
 ## Installation
 
